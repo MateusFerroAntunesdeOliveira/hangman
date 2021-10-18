@@ -46,7 +46,25 @@ def play():
             opcao_valida = False
 
     print(letras_acertadas)
-    print("A palavra tem", len(letras_acertadas), "letras")
+    print("A palavra tem", len(letras_acertadas), "letras\n")
+
+    while (not acertou and not enforcou):
+        chute = input("\nQual a letra: ")
+
+        if (chute in palavra_secreta):
+            i = 0
+            for letra in palavra_secreta:
+                if (chute == letra):
+                    letras_acertadas[i] = letra
+                i += 1
+        else:
+            erros += 1
+            # TODO funcao desenhar forca
+        
+        enforcou = erros == 7
+        acertou = "_" not in letras_acertadas
+        print(letras_acertadas)
+        # TODO verificar se ganhou ou nao
 
 if (__name__ == "__main__"):
     play()
