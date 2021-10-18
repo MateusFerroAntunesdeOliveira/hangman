@@ -50,6 +50,7 @@ def play():
 
     while (not acertou and not enforcou):
         chute = input("\nQual a letra: ")
+        chute = chute.strip().upper()
 
         if (chute in palavra_secreta):
             i = 0
@@ -64,7 +65,25 @@ def play():
         enforcou = erros == 7
         acertou = "_" not in letras_acertadas
         print(letras_acertadas)
-        # TODO verificar se ganhou ou nao
+    
+    # TODO verificar se perdeu
+    if (acertou):
+        mensagem_ganhou()
+
+def mensagem_ganhou():
+    print(" Parabens, você ganhou! ")
+    print("                        ")
+    print("     _____________      ")
+    print("  ' ._==_==_==_==_. '   ")
+    print("   .-\\:         /-.    ")
+    print("  | (|:.        |) |    ")
+    print("   ._|:.        |-'     ")
+    print("     \\::.      /       ")
+    print("      '::.    .'        ")
+    print("         )   (          ")
+    print("       _.'   '._        ")
+    print("     '___________'      ")
+    print("                        ")
 
 if (__name__ == "__main__"):
     play()
