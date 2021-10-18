@@ -66,15 +66,17 @@ def play():
         acertou = "_" not in letras_acertadas
         print(letras_acertadas)
     
-    # TODO verificar se perdeu
     if (acertou):
         mensagem_ganhou()
+    else:
+        mensagem_perdeu(palavra_secreta)
 
 def mensagem_ganhou():
+    print("\n")
     print(" Parabens, você ganhou! ")
     print("                        ")
     print("     _____________      ")
-    print("  ' ._==_==_==_==_. '   ")
+    print("   '._==_==_==_==_.'    ")
     print("   .-\\:         /-.    ")
     print("  | (|:.        |) |    ")
     print("   ._|:.        |-'     ")
@@ -84,6 +86,12 @@ def mensagem_ganhou():
     print("       _.'   '._        ")
     print("     '___________'      ")
     print("                        ")
+    print("\n")
+
+def mensagem_perdeu(palavra_secreta):
+    print("\n")
+    print(" Voce foi enforcado! ")
+    print(" A palavra era {}".format(palavra_secreta))
 
 if (__name__ == "__main__"):
     play()
