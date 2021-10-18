@@ -18,9 +18,11 @@ def play():
     erros = 0
 
     while (not opcao_valida):
+        print("\nEscolha um tema para o jogo!")
         print("(1) Frutas")
         print("(2) Paises")
         print("(3) Carros")
+        print("Digite uma das opções: ")
         tema = int(input())
 
         if (tema == 1):
@@ -49,7 +51,7 @@ def play():
     print("A palavra tem", len(letras_acertadas), "letras\n")
 
     while (not acertou and not enforcou):
-        chute = input("\nQual a letra: ")
+        chute = input("Qual a letra que você quer: ")
         chute = chute.strip().upper()
 
         if (chute in palavra_secreta):
@@ -60,10 +62,11 @@ def play():
                 i += 1
         else:
             erros += 1
-            # TODO funcao desenhar forca
+            desenha_forca(erros)
         
         enforcou = erros == 7
         acertou = "_" not in letras_acertadas
+        print("\n")
         print(letras_acertadas)
     
     if (acertou):
@@ -77,21 +80,69 @@ def mensagem_ganhou():
     print("                        ")
     print("     _____________      ")
     print("   '._==_==_==_==_.'    ")
-    print("   .-\\:         /-.    ")
-    print("  | (|:.        |) |    ")
-    print("   ._|:.        |-'     ")
-    print("     \\::.      /       ")
+    print("   .-\:          /-.    ")
+    print("  | (|:.         |) |   ")
+    print("   ._|:.         |_.    ")
+    print("     \::.       /       ")
     print("      '::.    .'        ")
-    print("         )   (          ")
-    print("       _.'   '._        ")
-    print("     '___________'      ")
+    print("        )    (          ")
+    print("      _.'    '._        ")
+    print("     '__________'       ")
     print("                        ")
-    print("\n")
 
 def mensagem_perdeu(palavra_secreta):
+    print("Voce foi enforcado! ")
+    print("A palavra era {}".format(palavra_secreta))
     print("\n")
-    print(" Voce foi enforcado! ")
-    print(" A palavra era {}".format(palavra_secreta))
+
+def desenha_forca(erros):
+    print("  ________      ")
+    print(" |/       |     ")
+    
+    if (erros == 1):
+        print(" |      ('_')   ")
+        print(" |              ")
+        print(" |              ")
+        print(" |              ")
+
+    if (erros == 2):
+        print(" |      ('_')   ")
+        print(" |        |     ")
+        print(" |              ")
+        print(" |              ")
+
+    if (erros == 3):
+        print(" |      ('_')   ")
+        print(" |        |     ")
+        print(" |        |     ")
+        print(" |              ")
+
+    if (erros == 4):
+        print(" |      ('_')   ")
+        print(" |       \|     ")
+        print(" |        |     ")
+        print(" |              ")
+
+    if (erros == 5):
+        print(" |      ('_')   ")
+        print(" |       \|/    ")
+        print(" |        |     ")
+        print(" |              ")
+
+    if (erros == 6):
+        print(" |      ('_')   ")
+        print(" |       \|/    ")
+        print(" |        |     ")
+        print(" |       /      ")
+
+    if (erros == 7):
+        print(" |      ('_')   ")
+        print(" |       \|/    ")
+        print(" |        |     ")
+        print(" |       / \    ")
+    
+    print(" |              ")
+    print("_|___           ")
 
 if (__name__ == "__main__"):
     play()
